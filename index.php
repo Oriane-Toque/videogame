@@ -24,9 +24,33 @@ if (!empty($_POST)) {
     // TODO #3 (optionnel) valider les données reçues (ex: donnée non vide)
     // --- START OF YOUR CODE ---
 
-    
+    // tableau qui récupère notification erreurs
+    $errors = [];
+    // une fonction pour vérifier ma date
+    function valideDate($date, $format = 'Y-m-d')
+    {
+        $d = DateTime::createFromFormat($format, $date);
+        return $d && $d->format($format) == $date;
+    }
 
-    // --- END OF YOUR CODE ---
+    // vérification des données reçues du formulaire
+    // + messages d'erreurs pour améliorations en projet
+    if(empty($name)) {
+        $errors[$name] = 'Le titre est obligatoire';
+    }
+    if(empty($editor)) {
+        $errors[$editor] = 'Le nom de l\'éditeur est obligatoire';
+    }
+    if(valideDate($release_date) === false) {
+        $errors[$release_date] = 'Veuillez spécifier une date de sortie';
+    }
+    if(empty($platform) && is_numeric($platform) === false) {
+        $errors[$platform] = 'Indiquer la plateforme correspondante';
+    }
+
+    // si le tableau $errors est vide alors on continue le script
+    if (empty($errors)) {
+        // --- END OF YOUR CODE ---
     
         // Insertion en DB du jeu video
         $insertQuery = "
@@ -39,7 +63,7 @@ if (!empty($_POST)) {
 
         $pdoStatement = $pdo->exec($insertQuery);
         header('Location:http://localhost/trinity/S04/e07/S04-E06-challenge-pdo-videogame-Oriane-Toque/index.php');
-
+    }
         // --- END OF YOUR CODE ---
 }
 
