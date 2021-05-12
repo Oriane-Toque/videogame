@@ -94,7 +94,10 @@ if (!empty($_GET['order'])) {
 // TODO #1 exécuter la requête contenue dans $sql et récupérer les valeurs dans la variable $videogameList
 // --- START OF YOUR CODE ---
 
-$videogameList = $pdo->query($sql);
+$pdoStatement = $pdo->query($sql);
+
+// pour avoir un tableau associatif -> fetchAll(PDO::FETCH_ASSOC)
+$videogameList = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 
 // --- END OF YOUR CODE ---
 
