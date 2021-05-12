@@ -88,6 +88,7 @@ if (!empty($_GET['order'])) {
 // TODO #1 exécuter la requête contenue dans $sql et récupérer les valeurs dans la variable $videogameList
 // --- START OF YOUR CODE ---
 
+$videogameList = $pdo->query($sql);
 
 // --- END OF YOUR CODE ---
 
