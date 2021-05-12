@@ -37,8 +37,8 @@ if (!empty($_POST)) {
     // TODO #3 une fois inséré, faire une redirection vers la page "index.php" (fonction header)
     // --- START OF YOUR CODE ---
 
-
-
+    $pdoStatement = $pdo->exec($insertQuery);
+    header('Location:http://localhost/trinity/S04/e07/S04-E06-challenge-pdo-videogame-Oriane-Toque/index.php');
 
     // --- END OF YOUR CODE ---
 }
