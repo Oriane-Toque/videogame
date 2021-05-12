@@ -24,23 +24,23 @@ if (!empty($_POST)) {
     // TODO #3 (optionnel) valider les données reçues (ex: donnée non vide)
     // --- START OF YOUR CODE ---
 
-
+    
 
     // --- END OF YOUR CODE ---
     
-    // Insertion en DB du jeu video
-    $insertQuery = "
+        // Insertion en DB du jeu video
+        $insertQuery = "
         INSERT INTO videogame (name, editor, release_date, platform_id)
         VALUES ('{$name}', '{$editor}', '{$release_date}', {$platform})
-    ";
-    // TODO #3 exécuter la requête qui insère les données
-    // TODO #3 une fois inséré, faire une redirection vers la page "index.php" (fonction header)
-    // --- START OF YOUR CODE ---
+        ";
+        // TODO #3 exécuter la requête qui insère les données
+        // TODO #3 une fois inséré, faire une redirection vers la page "index.php" (fonction header)
+        // --- START OF YOUR CODE ---
 
-    $pdoStatement = $pdo->exec($insertQuery);
-    header('Location:http://localhost/trinity/S04/e07/S04-E06-challenge-pdo-videogame-Oriane-Toque/index.php');
+        $pdoStatement = $pdo->exec($insertQuery);
+        header('Location:http://localhost/trinity/S04/e07/S04-E06-challenge-pdo-videogame-Oriane-Toque/index.php');
 
-    // --- END OF YOUR CODE ---
+        // --- END OF YOUR CODE ---
 }
 
 // Liste des consoles de jeux
