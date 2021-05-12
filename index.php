@@ -83,7 +83,10 @@ if (!empty($_GET['order'])) {
         // TODO #2 écrire la requête avec un tri par editeur croissant
         // --- START OF YOUR CODE ---
         $sql = '
-            SELECT * ...
+            SELECT *
+            FROM `videogame`
+            ORDER BY `editor`
+            ASC
         ';
         // --- END OF YOUR CODE ---
     }
