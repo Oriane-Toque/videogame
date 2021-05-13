@@ -21,6 +21,9 @@ if (!empty($_POST)) {
     $release_date = isset($_POST['release_date']) ? $_POST['release_date'] : '';
     $platform = isset($_POST['platform']) ? intval($_POST['platform']) : 0;
     
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
+    $editor = filter_input(INPUT_POST, 'editor', FILTER_SANITIZE_SPECIAL_CHARS);
+    
     // TODO #3 (optionnel) valider les données reçues (ex: donnée non vide)
     // --- START OF YOUR CODE ---
 
@@ -37,9 +40,11 @@ if (!empty($_POST)) {
     // + messages d'erreurs pour améliorations en projet
     if(empty($name)) {
         $errors[$name] = 'Le titre est obligatoire';
+        
     }
     if(empty($editor)) {
         $errors[$editor] = 'Le nom de l\'éditeur est obligatoire';
+        
     }
     if(valideDate($release_date) === false) {
         $errors[$release_date] = 'Veuillez spécifier une date de sortie';
