@@ -62,7 +62,8 @@ if (!empty($_POST)) {
         // --- START OF YOUR CODE ---
 
         $pdoStatement = $pdo->exec($insertQuery);
-        header('Location:http://localhost/trinity/S04/e07/S04-E06-challenge-pdo-videogame-Oriane-Toque/index.php');
+        header('Location:index.php');
+        exit();
     }
         // --- END OF YOUR CODE ---
 }
@@ -70,13 +71,21 @@ if (!empty($_POST)) {
 // Liste des consoles de jeux
 // TODO #4 (optionnel) récupérer cette liste depuis la base de données
 // --- START OF YOUR CODE ---
-$platformList = array(
+/* $platformList = array(
     1 => 'PC',
     2 => 'MegaDrive',
     3 => 'SNES',
     4 => 'PlayStation'
-);
+); */
 
+$sql = '
+    SELECT *
+    FROM `platform`
+';
+
+$pdoStatement = $pdo->query($sql);
+
+$platformList = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 
 // --- END OF YOUR CODE ---
 

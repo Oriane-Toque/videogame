@@ -78,8 +78,8 @@
                                 <label for="platform">Console / Support</label>
                                 <select class="custom-select" id="platform" name="platform">
                                     <option>-</option>
-                                    <?php foreach ($platformList as $currentPlaformId=>$currentPlatformName) : ?>
-                                    <option value="<?= $currentPlaformId ?>"><?= $currentPlatformName ?></option>
+                                    <?php foreach ($platformList as $currentPlatform) : ?>
+                                    <option value="<?= $currentPlatform['id']; ?>"><?= $currentPlatform['name']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
