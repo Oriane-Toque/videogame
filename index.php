@@ -20,6 +20,7 @@ if (!empty($_POST)) {
     $editor = isset($_POST['editor']) ? $_POST['editor'] : '';
     $release_date = isset($_POST['release_date']) ? $_POST['release_date'] : '';
     $platform = isset($_POST['platform']) ? intval($_POST['platform']) : 0;
+    var_dump($platform);
     
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
     $editor = filter_input(INPUT_POST, 'editor', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -39,19 +40,22 @@ if (!empty($_POST)) {
     // vérification des données reçues du formulaire
     // + messages d'erreurs pour améliorations en projet
     if(empty($name)) {
-        $errors[$name] = 'Le titre est obligatoire';
-        
+        $errors['name'] = 'Le titre est obligatoire';
     }
+
     if(empty($editor)) {
-        $errors[$editor] = 'Le nom de l\'éditeur est obligatoire';
-        
+        $errors['editor'] = 'Le nom de l\'éditeur est obligatoire'; 
     }
+
     if(valideDate($release_date) === false) {
-        $errors[$release_date] = 'Veuillez spécifier une date de sortie';
+        $errors['date'] = 'Veuillez spécifier une date de sortie';
     }
-    if(empty($platform) && is_numeric($platform) === false) {
-        $errors[$platform] = 'Indiquer la plateforme correspondante';
+
+    if(empty($platform)) {
+        $errors['platform'] = 'Indiquer la plateforme correspondante';   
     }
+
+    /* var_dump($errors); */
 
     // si le tableau $errors est vide alors on continue le script
     if (empty($errors)) {
@@ -68,7 +72,7 @@ if (!empty($_POST)) {
 
         $pdoStatement = $pdo->exec($insertQuery);
         header('Location:index.php');
-        exit();
+        die();
     }
         // --- END OF YOUR CODE ---
 }

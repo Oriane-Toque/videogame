@@ -62,22 +62,51 @@
                     <div class="card-header">Ajout</div>
                     <div class="card-body">
                         <form action="" method="post">
-                            <div class="form-group">
+
+                            <!-- Je vérifie si un message d'erreur existe pour l'entrée du nom du jeu vidéo -->
+                            <?php if (isset($errors['name'])): ?>
+                            <!-- Je récupère mon message d'erreur pour l'afficher -->
+                                <p><?= $errors['name']; ?></p>
+                            <?php endif; ?>
+
+                            <div class="form-group">    
                                 <label for="name">Nom</label>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="">
+                                <input type="text" value="<?= $name ?? ''; ?>" class="form-control" name="name" id="name" placeholder="">
                             </div>
+
+                            <!-- Je vérifie si un message d'erreur existe pour l'entrée du nom du jeu vidéo -->
+                            <?php if (isset($errors['editor'])): ?>
+                            <!-- Je récupère mon message d'erreur pour l'afficher -->
+                                <p><?= $errors['editor']; ?></p>
+                            <?php endif; ?>
+
                             <div class="form-group">
                                 <label for="editor">&Eacute;diteur</label>
-                                <input type="text" class="form-control" name="editor" id="editor" placeholder="">
+                                <input type="text" value="<?= $editor ?? ''; ?>" class="form-control" name="editor" id="editor" placeholder="">
                             </div>
+
+                            <!-- Je vérifie si un message d'erreur existe pour l'entrée du nom du jeu vidéo -->
+                            <?php if (isset($errors['date'])): ?>
+                            <!-- Je récupère mon message d'erreur pour l'afficher -->
+                                <p><?= $errors['date']; ?></p>
+                            <?php endif; ?>
+
                             <div class="form-group">
                                 <label for="release_date">Date de sortie</label>
-                                <input type="date" class="form-control" name="release_date" id="release_date" placeholder="YYYY-MM-DD">
+                                <input type="date" value="<?= $release_date ?? ''; ?>" class="form-control" name="release_date" id="release_date" placeholder="YYYY-MM-DD">
                             </div>
+
+                            <!-- Je vérifie si un message d'erreur existe pour l'entrée du nom du jeu vidéo -->
+                            <?php if (isset($errors['platform'])): ?>
+                            <!-- Je récupère mon message d'erreur pour l'afficher -->
+                                <p><?= $errors['platform']; ?></p>
+                            <?php endif; ?>
+
                             <div class="form-group">
+                                
                                 <label for="platform">Console / Support</label>
                                 <select class="custom-select" id="platform" name="platform">
-                                    <option>-</option>
+                                    <option></option>
                                     <?php foreach ($platformList as $currentPlatform) : ?>
                                     <option value="<?= $currentPlatform['id']; ?>"><?= $currentPlatform['name']; ?></option>
                                     <?php endforeach; ?>
