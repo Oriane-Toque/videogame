@@ -49,8 +49,8 @@
                         <td><?= $gameItems['id']; ?></td>
                         <td><?= $gameItems['name']; ?></td>
                         <td><?= $gameItems['editor']; ?></td>
-                        <td><?= $gameItems['release_date']; ?></td>
-                        <td><?= $gameItems['platform_id']; ?></td>
+                        <td><?= date('d-m-Y', strtotime($gameItems['release_date'])); ?></td>
+                        <td><?php echo $platformList[$gameItems['platform_id']]; ?></td>
                     </tr>
                     <?php endforeach; ?>
                     <!-- --- END OF YOUR CODE --- -->

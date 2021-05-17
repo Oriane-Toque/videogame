@@ -80,21 +80,21 @@ if (!empty($_POST)) {
 // Liste des consoles de jeux
 // TODO #4 (optionnel) récupérer cette liste depuis la base de données
 // --- START OF YOUR CODE ---
-/* $platformList = array(
+$platformList = array(
     1 => 'PC',
     2 => 'MegaDrive',
     3 => 'SNES',
     4 => 'PlayStation'
-); */
+);
 
-$sql = '
+/* $sql = '
     SELECT *
     FROM `platform`
 ';
 
 $pdoStatement = $pdo->query($sql);
 
-$platformList = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+$platformList = $pdoStatement->fetchAll(PDO::FETCH_ASSOC); */
 
 // --- END OF YOUR CODE ---
 
