@@ -20,8 +20,8 @@ if (!empty($_POST)) {
     $editor = isset($_POST['editor']) ? $_POST['editor'] : '';
     $release_date = isset($_POST['release_date']) ? $_POST['release_date'] : '';
     $platform = isset($_POST['platform']) ? intval($_POST['platform']) : 0;
-    var_dump($platform);
     
+    // pour gérer les apostrophes & guillemets
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
     $editor = filter_input(INPUT_POST, 'editor', FILTER_SANITIZE_SPECIAL_CHARS);
     
@@ -80,21 +80,26 @@ if (!empty($_POST)) {
 // Liste des consoles de jeux
 // TODO #4 (optionnel) récupérer cette liste depuis la base de données
 // --- START OF YOUR CODE ---
-$platformList = array(
+/* $platformList = array(
     1 => 'PC',
     2 => 'MegaDrive',
     3 => 'SNES',
     4 => 'PlayStation'
-);
+); */
 
-/* $sql = '
+$sql = '
     SELECT *
     FROM `platform`
 ';
 
-$pdoStatement = $pdo->query($sql);
+// on peut écrire la requête directement dans le query
+$pdoStatement = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
-$platformList = $pdoStatement->fetchAll(PDO::FETCH_ASSOC); */
+// parcourir ce tableau
+foreach($pdoStatement as $platformValue) {
+    $key = $platformValue['id'];
+    $platformList[$key] = $platformValue['name'];
+}
 
 // --- END OF YOUR CODE ---
 

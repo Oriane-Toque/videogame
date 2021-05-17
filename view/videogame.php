@@ -107,8 +107,13 @@
                                 <label for="platform">Console / Support</label>
                                 <select class="custom-select" id="platform" name="platform">
                                     <option></option>
-                                    <?php foreach ($platformList as $currentPlatform) : ?>
-                                    <option value="<?= $currentPlatform['id']; ?>"><?= $currentPlatform['name']; ?></option>
+                                    <!-- Permet de récupérer la valeur de la platforme en cas d'erreur si elle a été donné précédement 
+                                    création d'une balise option avec la valeur donnée ainsi que la value correspondant à l'id de la platforme-->
+                                    <?php if (!empty($platform)): ?>
+                                    <option value="<?= $platform; ?>" selected ><?= $platformList[$platform]; ?></option>
+                                    <?php endif; ?>
+                                    <?php foreach ($platformList as $currentPlatformId => $currentPlatform) : ?>
+                                    <option value="<?= $currentPlatformId; ?>"><?= $currentPlatform; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
