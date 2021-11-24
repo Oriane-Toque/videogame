@@ -5,13 +5,13 @@
 // --- START OF YOUR CODE ---
 
   // dsn = data source name
-  $dsn = 'mysql:dbname=videogame;host=localhost;charset=UTF8mb4';
+  $dsn = 'mysql:dbname=qc1w67hiprxlfc3i;host=lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com;charset=UTF8mb4';
 
   // username
-  $username = 'videogame';
+  $username = 'zjxbi79zrxm2plpm';
 
   // password
-  $password = 'Q9pUw5Xc2';
+  $password = 'fwq95h8d4xwlblys';
 
   // option
   $option = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING);
